@@ -14,6 +14,7 @@ public class Program
       Console.WriteLine("2. Manajemen Anggota");
       Console.WriteLine("3. Peminjaman Buku");
       Console.WriteLine("4. Exit");
+      Console.Write("Enter your choice: ");
       var input = Console.ReadLine();
       active = Menu(input);
     }
@@ -57,6 +58,7 @@ public class Program
       Console.WriteLine("3. Update");
       Console.WriteLine("4. Delete");
       Console.WriteLine("5. Back");
+      Console.Write("Enter your choice: ");
       var input2 = Console.ReadLine();
       switch (input2)
       {
@@ -97,6 +99,7 @@ public class Program
       Console.WriteLine("3. Update");
       Console.WriteLine("4. Delete");
       Console.WriteLine("5. Back");
+      Console.Write("Enter your choice: ");
       var input2 = Console.ReadLine();
       switch (input2)
       {
@@ -137,6 +140,7 @@ public class Program
       Console.WriteLine("3. Update");
       Console.WriteLine("4. Delete");
       Console.WriteLine("5. Back");
+      Console.Write("Enter your choice: ");
       var input2 = Console.ReadLine();
       switch (input2)
       {

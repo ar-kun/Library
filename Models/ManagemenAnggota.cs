@@ -75,26 +75,37 @@ public class ManagemenAnggota
     command.Connection = connection;
     command.CommandText = "INSERT INTO anggota VALUES(@Id, @Nama, @Alamat, @NoTelp, @Email, @NoAnggota)";
 
-    command.Parameters.Add(new SqlParameter("@Id", managemenAnggota.Id));
-    command.Parameters.Add(new SqlParameter("@Nama", managemenAnggota.Nama));
-    command.Parameters.Add(new SqlParameter("@Alamat", managemenAnggota.Alamat));
-    command.Parameters.Add(new SqlParameter("@NoTelp", managemenAnggota.NoTelp));
-    command.Parameters.Add(new SqlParameter("@Email", managemenAnggota.Email));
-    command.Parameters.Add(new SqlParameter("@NoAnggota", managemenAnggota.NoAnggota));
-
     try
     {
+      command.Parameters.Add(new SqlParameter("@Id", managemenAnggota.Id));
+      command.Parameters.Add(new SqlParameter("@Nama", managemenAnggota.Nama));
+      command.Parameters.Add(new SqlParameter("@Alamat", managemenAnggota.Alamat));
+      command.Parameters.Add(new SqlParameter("@NoTelp", managemenAnggota.NoTelp));
+      command.Parameters.Add(new SqlParameter("@Email", managemenAnggota.Email));
+      command.Parameters.Add(new SqlParameter("@NoAnggota", managemenAnggota.NoAnggota));
+
       connection.Open();
+      using var transaction = connection.BeginTransaction();
+      try
+      {
+        command.Transaction = transaction;
 
-      var result = command.ExecuteNonQuery();
+        var result = command.ExecuteNonQuery();
 
-      connection.Close();
+        transaction.Commit();
+        connection.Close();
 
-      return result.ToString();
+        return result.ToString();
+      }
+      catch (Exception ex)
+      {
+        transaction.Rollback();
+        return $"Error Transaction: {ex.Message}";
+      }
     }
     catch (Exception ex)
     {
-      Console.WriteLine($"Error: {ex.Message}");
+      return $"Error: {ex.Message}";
     }
 
   }
@@ -107,26 +118,37 @@ public class ManagemenAnggota
     command.Connection = connection;
     command.CommandText = "UPDATE anggota SET nama = @Nama, alamat = @Alamat, no_telp = @NoTelp, email = @Email, no_anggota = @NoAnggota WHERE id = @Id";
 
-    command.Parameters.Add(new SqlParameter("@Id", managemenAnggota.Id));
-    command.Parameters.Add(new SqlParameter("@Nama", managemenAnggota.Nama));
-    command.Parameters.Add(new SqlParameter("@Alamat", managemenAnggota.Alamat));
-    command.Parameters.Add(new SqlParameter("@NoTelp", managemenAnggota.NoTelp));
-    command.Parameters.Add(new SqlParameter("@Email", managemenAnggota.Email));
-    command.Parameters.Add(new SqlParameter("@NoAnggota", managemenAnggota.NoAnggota));
-
     try
     {
+      command.Parameters.Add(new SqlParameter("@Id", managemenAnggota.Id));
+      command.Parameters.Add(new SqlParameter("@Nama", managemenAnggota.Nama));
+      command.Parameters.Add(new SqlParameter("@Alamat", managemenAnggota.Alamat));
+      command.Parameters.Add(new SqlParameter("@NoTelp", managemenAnggota.NoTelp));
+      command.Parameters.Add(new SqlParameter("@Email", managemenAnggota.Email));
+      command.Parameters.Add(new SqlParameter("@NoAnggota", managemenAnggota.NoAnggota));
+
       connection.Open();
+      using var transaction = connection.BeginTransaction();
+      try
+      {
+        command.Transaction = transaction;
 
-      var result = command.ExecuteNonQuery();
+        var result = command.ExecuteNonQuery();
 
-      connection.Close();
+        transaction.Commit();
+        connection.Close();
 
-      return result.ToString();
+        return result.ToString();
+      }
+      catch (Exception ex)
+      {
+        transaction.Rollback();
+        return $"Error Transaction: {ex.Message}";
+      }
     }
     catch (Exception ex)
     {
-      Console.WriteLine($"Error: {ex.Message}");
+      return $"Error: {ex.Message}";
     }
   }
 

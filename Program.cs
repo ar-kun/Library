@@ -47,7 +47,7 @@ public class Program
     var managemenBuku = new ManagemenBuku();
     var managemenBukuView = new ManagemenBukuView();
 
-    var managemenController = new ManagemenBukuController(managemenBuku, managemenBukuView);
+    var managemenBukuController = new ManagemenBukuController(managemenBuku, managemenBukuView);
 
     var active = true;
     while (active)
@@ -61,16 +61,16 @@ public class Program
       switch (input2)
       {
         case "1":
-          managemenController.GetAll();
+          managemenBukuController.GetAll();
           break;
         case "2":
-          managemenController.Insert();
+          managemenBukuController.Insert();
           break;
         case "3":
-          managemenController.Update();
+          managemenBukuController.Update();
           break;
         case "4":
-          managemenController.Delete();
+          managemenBukuController.Delete();
           break;
         case "5":
           active = false;
@@ -82,7 +82,85 @@ public class Program
     }
   }
 
+  public static void ManajemenAnggota()
+  {
+    var managemenAnggota = new ManagemenAnggota();
+    var managemenAnggotaView = new ManagemenAnggotaView();
 
+    var managemenAnggotaController = new ManagemenAnggotaController(managemenAnggota, managemenAnggotaView);
+
+    var active = true;
+    while (active)
+    {
+      Console.WriteLine("1. Get All");
+      Console.WriteLine("2. Insert");
+      Console.WriteLine("3. Update");
+      Console.WriteLine("4. Delete");
+      Console.WriteLine("5. Back");
+      var input2 = Console.ReadLine();
+      switch (input2)
+      {
+        case "1":
+          managemenAnggotaController.GetAll();
+          break;
+        case "2":
+          managemenAnggotaController.Insert();
+          break;
+        case "3":
+          managemenAnggotaController.Update();
+          break;
+        case "4":
+          managemenAnggotaController.Delete();
+          break;
+        case "5":
+          active = false;
+          break;
+        default:
+          Console.WriteLine("Invalid choice");
+          break;
+      }
+    }
+  }
+
+  public static void PeminjamanBuku()
+  {
+    var peminjamanBuku = new PeminjamanBuku();
+    var peminjamanBukuView = new PeminjamanBukuView();
+
+    var peminjamanBukuController = new PeminjamanBukuController(peminjamanBuku, peminjamanBukuView);
+
+    var active = true;
+    while (active)
+    {
+      Console.WriteLine("1. Get All");
+      Console.WriteLine("2. Insert");
+      Console.WriteLine("3. Update");
+      Console.WriteLine("4. Delete");
+      Console.WriteLine("5. Back");
+      var input2 = Console.ReadLine();
+      switch (input2)
+      {
+        case "1":
+          peminjamanBukuController.GetAll();
+          break;
+        case "2":
+          peminjamanBukuController.Insert();
+          break;
+        case "3":
+          peminjamanBukuController.Update();
+          break;
+        case "4":
+          peminjamanBukuController.Delete();
+          break;
+        case "5":
+          active = false;
+          break;
+        default:
+          Console.WriteLine("Invalid choice");
+          break;
+      }
+    }
+  }
 
 
 }
